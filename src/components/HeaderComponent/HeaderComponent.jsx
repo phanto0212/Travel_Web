@@ -9,7 +9,13 @@ function HeaderComponent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({})
   const Navigate = useNavigate();
-
+  const [searchKey, setSearchKey] = useState('');
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && searchKey.trim()) {
+      // Điều hướng sang trang search với query key
+      Navigate(`/search?key=${encodeURIComponent(searchKey.trim())}`);
+    }
+  };
   
 
   useEffect(() => {
@@ -70,11 +76,15 @@ function HeaderComponent() {
           </WrapperHomeHeader>
         </Col>
         <Col span={10}>
-          <CustomSearch placeholder="input search text" className="searchHeader" style={{ width: 500, marginTop: 5 }} />
+          <CustomSearch spellCheck={false}
+        value={searchKey}
+        onChange={(e) => setSearchKey(e.target.value)} // Cập nhật giá trị nhập
+        onKeyDown={handleKeyDown} // Lắng nghe sự kiện khi nhấn phím
+           placeholder="Nhập thông tin địa điểm mà bạn muốn đến ở đây" className="searchHeader" style={{ width: 500, marginTop: 5 }} />
         </Col>
         <Col span={8}>
           <Container>
-            <ContainerButton><LinkButton href="/">Các bài viết</LinkButton></ContainerButton>
+            <ContainerButton><LinkButton onClick={()=>Navigate('/news')}>Các bài viết</LinkButton></ContainerButton>
             <ContainerButton><LinkButton onClick={handleToCart}>Giỏ hàng</LinkButton></ContainerButton>
             {!isLoggedIn && (
               <>

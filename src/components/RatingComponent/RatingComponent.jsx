@@ -10,7 +10,7 @@ function RatingComponent({tourId, tourTitle, listRate, rateScore, rateSize, onDa
     const token = localStorage.getItem('authToken')
     const Navigate = useNavigate()
     const [isBooked, setIsBooked] = useState(null)
-    const  [testRating, setTestRating] = useState(null)
+    const  [testRating, setTestRating] = useState(true)
     const [activeTab, setActiveTab] = useState(0)
     const [textRate, setTextRate] = useState('')
     const handleQuatifi = ()=>{
@@ -24,6 +24,7 @@ function RatingComponent({tourId, tourTitle, listRate, rateScore, rateSize, onDa
           }
         });
         setTestRating(reponse.data.test)
+        console.log(reponse.data.test)
       }
       catch(error){
         console.log('error', error)
@@ -51,7 +52,7 @@ function RatingComponent({tourId, tourTitle, listRate, rateScore, rateSize, onDa
           }
           else{
             if(isBooked){
-               if(!testRating){
+               if(testRating==false){
                  if(activeTab!=0 && textRate != '' ){
                   const response = await newRequest.post(`/api/rating/add/${tourId}`,{
                     comment: textRate,

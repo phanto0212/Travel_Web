@@ -12,13 +12,15 @@ function TourDetail() {
   const [rateScore,setRateScore] = useState(0)
   const [countBooked, setCountBooked] = useState(0)
   const id = params.tourId;
-  
+  useEffect(() => {
+    window.scrollTo(0, 0); // Cuộn về đầu trang
+  }, []);
   const [tour, setTour] = useState([])
   const fetchTour = async()=>{
     try{
         const response = await newRequest.get(`/api/tours/getTourByid/${id}`);
         
-        if (response.data && response.data.tour) {
+        if (response.data && response.data) {
           setTour(response.data.tour);
         } else {
           console.log('No tour data found');

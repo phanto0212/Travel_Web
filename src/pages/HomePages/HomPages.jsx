@@ -29,6 +29,9 @@ function HomePages() {
     useEffect(()=>{
         fetchTours()
     },[])
+    useEffect(() => {
+        window.scrollTo(0, 0); // Cuộn về đầu trang
+      }, []);
     return ( 
         <div>
             <SlideComponent arrImages = {[slider1, slider3]} />

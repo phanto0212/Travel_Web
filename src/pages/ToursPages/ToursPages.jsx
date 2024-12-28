@@ -13,7 +13,9 @@ function ToursPages() {
     const [currentPage, setCurrentPage] = useState(1);
     const [filters, setFilters] = useState({ text: null, price: null });
     const pageSize = 20; // Số lượng sản phẩm trên mỗi trang
-
+    useEffect(() => {
+        window.scrollTo(0, 0); // Cuộn về đầu trang
+      }, []);
     const handleClick = (tourId) => {
         navigate(`/tour-detail/${tourId}`);
     };
