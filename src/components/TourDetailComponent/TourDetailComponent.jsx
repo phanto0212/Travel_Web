@@ -121,7 +121,7 @@ function TourDetailComponent({tour, listRate, rateScore, rateSize, onData }) {
     <Wrapper >
         <Row >
         <Col span={24} style={{padding: '16px'}}>
-          <Image src={tour.image} style={{borderTopLeftRadius: '18px', borderTopRightRadius: '18px'}} alt='Tour Image Large' preview={false} />
+          {/* <Image src={tour.image} style={{borderTopLeftRadius: '18px', borderTopRightRadius: '18px'}} alt='Tour Image Large' preview={false} /> */}
           <Row style={{paddingTop: '10px'}}>
             {/* <Col span={4}>
             <WrapperImageSmall src={ImageTourSmall} alt='Tour Image small' preview={true} />
