@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newRequest = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'https://travel-web-backend-1.onrender.com',
     // withCredentials: true
 })
 
